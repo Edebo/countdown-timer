@@ -22,9 +22,7 @@ form.addEventListener("submit", e => {
 
   dateArray = date.value.split("-");
   timeArray = time.value.split(":");
-  console.log(date.value, time.value);
 
-  console.log(new Date(+dateArray[0], +dateArray[1] - 1, +dateArray[2]));
   stopTime = new Date(
     +dateArray[0],
     +dateArray[1] - 1,
