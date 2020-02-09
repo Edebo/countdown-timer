@@ -2,6 +2,21 @@ const form = document.querySelector("form");
 const date = document.querySelector("#date");
 const time = document.querySelector("#time");
 const result = document.querySelector("#result");
+const audio = document.querySelector("#audio");
+const alarmStop = document.querySelector("#alarm-stop");
+const hack = document.querySelector("#hack");
+
+let ms1 = "You have been HACKED 🤣🤣🤣!!!";
+let timeouts = [];
+function typeMessage(message) {
+  for (let i = 0; i < message.length; i++) {
+    timeouts.push(
+      setTimeout(() => {
+        hack.innerHTML += message.charAt(i);
+      }, 500 * i)
+    );
+  }
+}
 
 function countDown(stopTime) {
   let timeValue = stopTime - +new Date();
@@ -41,7 +56,28 @@ form.addEventListener("submit", e => {
 
     if (remaining < 0) {
       clearInterval(x);
+
+      audio.play();
+      alarmStop.style.display = "inline-block";
+      document.body.style.backgroundImage = "url('hack.gif')";
+      document.body.style.backgroundSize = "contain";
       result.innerHTML = "Time expired";
+      hack.innerHTML = "";
     }
   }, 1000);
+});
+
+alarmStop.addEventListener("click", e => {
+  for (let i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+  audio.pause();
+  audio.currentTime = 0;
+  result.innerHTML = "0d: 0hr: 0m: 0s";
+  alarmStop.style.display = "none";
+  document.body.style.background = "linear-gradient(to right,#155799,#159957)";
+  hack.innerHTML = "";
+});
+audio.addEventListener("playing", function() {
+  typeMessage(ms1);
 });
