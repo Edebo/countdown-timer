@@ -8,7 +8,7 @@ const hack = document.querySelector("#hack");
 
 let message = "You have been HACKED 🤣🤣🤣!!!";
 let timeouts = [];
-function typeMessage(message) {
+function typeMessage() {
   for (let i = 0; i < message.length; i++) {
     timeouts.push(
       setTimeout(() => {
