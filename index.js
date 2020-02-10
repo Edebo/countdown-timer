@@ -6,7 +6,7 @@ const audio = document.querySelector("#audio");
 const alarmStop = document.querySelector("#alarm-stop");
 const hack = document.querySelector("#hack");
 
-let ms1 = "You have been HACKED 🤣🤣🤣!!!";
+let message = "You have been HACKED 🤣🤣🤣!!!";
 let timeouts = [];
 function typeMessage(message) {
   for (let i = 0; i < message.length; i++) {
@@ -79,5 +79,5 @@ alarmStop.addEventListener("click", e => {
   hack.innerHTML = "";
 });
 audio.addEventListener("playing", function() {
-  typeMessage(ms1);
+  typeMessage();
 });
